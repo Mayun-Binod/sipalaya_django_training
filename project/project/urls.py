@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from app import views
+admin.site.site_header = "Binod Admin"
+admin.site.site_title = "Binod Admin Portal"
+admin.site.index_title = "Welcome to Binod Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
-]
+]+static(settings.MEDIA_URL,document.root=settings.MEDIA_ROOT)
